@@ -13,14 +13,10 @@ function getModesIcons(mode, size) {
             // requested mode directly for this key instead.
             let folder =
                 key === "snapmint" ? mode : utility.PAYMENT_MODE_MAPPING[key];
-            let iconUrl = `${utility.IMAGE_URL}/${folder}/${utility.SIZE_MAPPING[imageSize]}/${key}.${utility.IMAGE_TYPE[imageSize]}`;
-            if (imageSize === "svg") {
-                iconUrl += "?width=130&height=130";
-            }
             returnArray.push({
                 icon_name: key,
                 icon_version: "1",
-                icon_url: iconUrl,
+                icon_url: `${utility.IMAGE_URL}/${folder}/${utility.SIZE_MAPPING[imageSize]}/${key}.${utility.IMAGE_TYPE[imageSize]}`,
             });
         });
     }

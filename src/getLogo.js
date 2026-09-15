@@ -33,14 +33,10 @@ function formatNick(nick) {
 }
 function getIcon(nick, size) {
     let imageSize = getImageSize(size);
-    let defaultUrl = utility.DEFAULT_URL;
-    if (imageSize === "svg") {
-        defaultUrl += "?width=130&height=130";
-    }
     let returnObj = {
         icon_name: "default",
         icon_version: "1",
-        icon_url: defaultUrl,
+        icon_url: utility.DEFAULT_URL,
     };
     if (!nick) {
         return returnObj;
@@ -56,14 +52,10 @@ function getIcon(nick, size) {
                 // Use the category that actually matched for this key instead.
                 let folder =
                     key === "snapmint" ? mode : utility.PAYMENT_MODE_MAPPING[key];
-                let iconUrl = `${utility.IMAGE_URL}/${folder}/${utility.SIZE_MAPPING[imageSize]}/${key}.${utility.IMAGE_TYPE[imageSize]}`;
-                if (imageSize === "svg") {
-                    iconUrl += "?width=130&height=130";
-                }
                 returnObj = {
                     icon_name: key,
                     icon_version: "1",
-                    icon_url: iconUrl,
+                    icon_url: `${utility.IMAGE_URL}/${folder}/${utility.SIZE_MAPPING[imageSize]}/${key}.${utility.IMAGE_TYPE[imageSize]}`,
                 };
                 flag = false;
                 return false;
